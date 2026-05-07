@@ -328,14 +328,150 @@ def save_dashboard_html(signal):
         </ul>
 
         <div class="footer">
-            Detta är en analysrapport och inte finansiell rådgivning. Handla alltid manuellt och med egen riskkontroll.
+            <p>
+                <a href="logg.html">Öppna signal-loggen</a>
+            </p>
+            <p>
+                Detta är en analysrapport och inte finansiell rådgivning. Handla alltid manuellt och med egen riskkontroll.
+            </p>
         </div>
+        
     </div>
 </body>
 </html>
 """
 
     with open(file_path, "w", encoding="utf-8") as file:
+        file.write(html)
+def save_log_html():
+    csv_path = Path("btc_signal_logg.csv")
+    html_path = Path("logg.html")
+
+    if not csv_path.exists():
+        return
+
+    df = pd.read_csv(csv_path)
+
+    # Visa senaste raderna överst
+    df = df.tail(50).iloc[::-1]
+
+    rows_html = ""
+
+    for _, row in df.iterrows():
+        rows_html += f"""
+        <tr>
+            <td>{row.get("date", "")}</td>
+            <td>{row.get("price", "")}</td>
+            <td>{row.get("usd_sek", "")}</td>
+            <td>{row.get("virtune_estimated_price_sek", "")}</td>
+            <td>{row.get("btc_change_24h", "")}</td>
+            <td>{row.get("rsi", "")}</td>
+            <td>{row.get("score", "")}</td>
+            <td>{row.get("signal", "")}</td>
+            <td>{row.get("risk_comment", "")}</td>
+            <td>{row.get("avanza_action", "")}</td>
+        </tr>
+        """
+
+    html = f"""
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>BTC Signal-logg</title>
+    <style>
+        body {{
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+            padding: 20px;
+        }}
+        .container {{
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+        }}
+        h1 {{
+            margin-top: 0;
+        }}
+        a {{
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: bold;
+        }}
+        .table-wrap {{
+            overflow-x: auto;
+            margin-top: 20px;
+        }}
+        table {{
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }}
+        th, td {{
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }}
+        th {{
+            background: #f1f5f9;
+            position: sticky;
+            top: 0;
+        }}
+        tr:hover {{
+            background: #f8fafc;
+        }}
+        .footer {{
+            font-size: 12px;
+            color: #777;
+            margin-top: 25px;
+        }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BTC Signal-logg</h1>
+
+        <p>
+            <a href="index.html">← Tillbaka till dashboard</a>
+        </p>
+
+        <p>Visar de senaste 50 signalerna, nyaste överst.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>BTC-pris</th>
+                        <th>USD/SEK</th>
+                        <th>Virtune ca SEK</th>
+                        <th>BTC 24h %</th>
+                        <th>RSI</th>
+                        <th>Score</th>
+                        <th>Signal</th>
+                        <th>Riskkommentar</th>
+                        <th>Avanza-åtgärd</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rows_html}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            Detta är en historisk signal-logg och inte finansiell rådgivning.
+        </div>
+    </div>
+</body>
+</html>
+"""
+
+    with open(html_path, "w", encoding="utf-8") as file:
         file.write(html)
 
 if __name__ == "__main__":
@@ -345,3 +481,4 @@ if __name__ == "__main__":
     print_report(signal)
     save_signal_to_csv(signal)
     save_dashboard_html(signal)
+    save_log_html()
