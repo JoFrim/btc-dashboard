@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>BTC Swing Backtest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #222;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .card {
+            background: #f8f8f8;
+            padding: 18px;
+            border-radius: 12px;
+        }
+        .label {
+            font-size: 13px;
+            color: #666;
+        }
+        .value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 6px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+        th, td {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #f1f5f9;
+        }
+        a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .note {
+            background: #fff7ed;
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+        .footer {
+            font-size: 12px;
+            color: #777;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BTC Swing Backtest</h1>
+
+        <p>
+            <a href="index.html">Dashboard</a> |
+            <a href="logg.html">Signal-logg</a>
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <div class="label">Startkapital</div>
+                <div class="value">$10000</div>
+            </div>
+
+            <div class="card">
+                <div class="label">Handelskostnad per köp/sälj</div>
+                <div class="value">0.3 %</div>
+            </div>
+
+            <div class="card">
+                <div class="label">Slutvärde strategi</div>
+                <div class="value">$10030.59</div>
+            </div>
+
+            <div class="card">
+                <div class="label">Slutvärde buy and hold</div>
+                <div class="value">$9631.58</div>
+            </div>
+
+            <div class="card">
+                <div class="label">Avkastning strategi</div>
+                <div class="value">0.31 %</div>
+            </div>
+
+            <div class="card">
+                <div class="label">Avkastning buy and hold</div>
+                <div class="value">-3.68 %</div>
+            </div>
+
+            <div class="card">
+                <div class="label">Max drawdown strategi</div>
+                <div class="value">-9.17 %</div>
+            </div>
+
+            <div class="card">
+                <div class="label">Antal köp/sälj-affärer</div>
+                <div class="value">3</div>
+            </div>
+        </div>
+
+        <div class="note">
+            Strategin jämförs mot buy and hold på BTC/USD. Detta är ett förenklat backtest och tar inte hänsyn till faktisk Virtune-kurs, exakta spreadar, valutaväxling eller skatt.
+        </div>
+
+        <h2>Senaste köp/sälj-affärer</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>BTC-pris</th>
+                    <th>Signal</th>
+                    <th>Score</th>
+                    <th>Action</th>
+                    <th>Portföljvärde</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td>2026-04-16 00:00:00</td>
+            <td>74833.51</td>
+            <td>BUY</td>
+            <td>20</td>
+            <td>BUY</td>
+            <td>9203.03</td>
+        </tr>
+        
+        <tr>
+            <td>2026-01-21 00:00:00</td>
+            <td>88312.84</td>
+            <td>SELL</td>
+            <td>-55</td>
+            <td>SELL</td>
+            <td>9230.72</td>
+        </tr>
+        
+        <tr>
+            <td>2026-01-18 00:00:00</td>
+            <td>95099.53</td>
+            <td>BUY</td>
+            <td>20</td>
+            <td>BUY</td>
+            <td>9970.0</td>
+        </tr>
+        
+            </tbody>
+        </table>
+
+        <div class="footer">
+            Detta är endast ett analysverktyg och inte finansiell rådgivning.
+        </div>
+    </div>
+</body>
+</html>
