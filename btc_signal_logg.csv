@@ -83,3 +83,4 @@ date,price,usd_sek,virtune_estimated_price_sek,btc_change_24h,rsi,score,signal,r
 2026-07-18,63954.32,9.655,61.6,0.05,51.9,-20,SÄLJ / MINSKA RISK,Priset är under EMA50. Swingläget är svagare och risken är förhöjd.,Minska risk eller sälj del av positionen om du redan äger Virtune Prime.
 2026-07-19,64679.68,9.655,62.3,-0.18,54.6,-20,SÄLJ / MINSKA RISK,Priset är under EMA50. Swingläget är svagare och risken är förhöjd.,Minska risk eller sälj del av positionen om du redan äger Virtune Prime.
 2026-07-20,64123.79,9.655,61.76,-0.86,52.0,-20,SÄLJ / MINSKA RISK,Priset är under EMA50. Swingläget är svagare och risken är förhöjd.,Minska risk eller sälj del av positionen om du redan äger Virtune Prime.
+2026-07-21,65668.39,9.6665,63.33,0.72,58.6,-20,SÄLJ / MINSKA RISK,"Ingen extrem dygnsrörelse. Bedöm signalen enligt trend, RSI och egen risknivå.",Minska risk eller sälj del av positionen om du redan äger Virtune Prime.
